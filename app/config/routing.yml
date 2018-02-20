@@ -1,0 +1,16 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+    prefix: /
+
+account:
+    resource: "@AccountBundle/Controller/"
+    type:     annotation
+    prefix:   /account
+
+fos_user:
+     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+fos_message:
+    resource: "@FOSMessageBundle/Resources/config/routing.xml"
+    prefix: /messaging
