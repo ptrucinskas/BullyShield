@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6fa9fd77-c2a7-4d07-8bc6-21fe149f590b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/security.yml" afterPath="$PROJECT_DIR$/app/config/security.yml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,8 +30,8 @@
     <favorites_list name="GroupProject" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="324">
@@ -39,6 +39,16 @@
               <folding>
                 <element signature="e#868#905#0#Twig" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="security.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/config/security.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="486">
+              <caret line="27" column="43" lean-forward="false" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -53,7 +63,6 @@
       <list>
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/src/AccountBundle/Controller/DefaultController.php" />
-        <option value="$PROJECT_DIR$/app/config/security.yml" />
         <option value="$PROJECT_DIR$/src/AccountBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/AccountBundle/Entity/Message.php" />
         <option value="$PROJECT_DIR$/src/AccountBundle/Entity/MessageMetadata.php" />
@@ -86,6 +95,7 @@
         <option value="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/confirmed.html.twig" />
         <option value="$PROJECT_DIR$/src/AccountBundle/Controller/RegistrationController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+        <option value="$PROJECT_DIR$/app/config/security.yml" />
       </list>
     </option>
   </component>
@@ -96,11 +106,11 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="4">
+  <component name="ProjectFrameBounds" extendedState="5">
     <option name="x" value="65" />
     <option name="y" value="25" />
-    <option name="width" value="1117" />
-    <option name="height" value="1053" />
+    <option name="width" value="1133" />
+    <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -118,8 +128,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -136,31 +146,13 @@
               <item name="GroupProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="GroupProject" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="GroupProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="GroupProject" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="FOSMessageBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="GroupProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GroupProject" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="FOSMessageBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="GroupProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GroupProject" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="FOSMessageBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Message" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="GroupProject" type="b2602c69:ProjectViewProjectNode" />
@@ -226,11 +218,12 @@
       <workItem from="1519248339969" duration="8643000" />
       <workItem from="1519491742720" duration="8660000" />
       <workItem from="1519502268241" duration="39000" />
+      <workItem from="1519504473314" duration="1307000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34898000" />
+    <option name="totallyTimeSpent" value="36205000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -242,9 +235,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="25" width="1117" height="1053" extended-state="4" />
+    <frame x="65" y="25" width="1133" height="1055" extended-state="5" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2735761" sideWeight="0.49590164" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.275069" sideWeight="0.49590164" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991803" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -274,7 +268,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AccountBundle/Entity/MessageMetadata.php" />
     <entry file="file://$PROJECT_DIR$/src/AccountBundle/Entity/Thread.php" />
     <entry file="file://$PROJECT_DIR$/src/AccountBundle/Entity/ThreadMetadata.php" />
     <entry file="file://$PROJECT_DIR$/app/AppKernel.php">
@@ -472,7 +465,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -483,6 +475,14 @@
           <folding>
             <element signature="e#868#905#0#Twig" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/security.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="27" column="43" lean-forward="false" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
