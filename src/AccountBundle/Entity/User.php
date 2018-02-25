@@ -25,6 +25,9 @@ class User extends BaseUser implements ParticipantInterface
     protected $id;
 
 
+
+    //protected $guardianEmail;
+
     /**
      * Get id
      *
