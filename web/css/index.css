@@ -1,0 +1,105 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background-color: #f5f5f5;
+    /*margin-bottom: 60px;*/
+}
+
+.title-header {
+    /*margin: 0 auto;*/
+    text-align: center;
+}
+
+.login {
+    min-width: 500px;
+    margin-top: 30px;
+}
+
+#login_register_div {
+    height: 60%;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+
+.tab-content {
+    padding-top: 20px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #343a40;
+}
+
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.logo {
+    height: 50px;
+    width: 50px;
+}
+
+#heading_div {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+#reset {
+    margin-top: 10px;
+}
+
+#_submit {
+    margin-bottom: 0.5rem !important;
+}
+
+.nav-item-login {
+    width: 50%;
+    text-align: center;
+}
+
+.intro-div {
+    max-width: 600px;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    flex-direction: column;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 60%;
+}
+
+#goto-login, #goto-intro {
+    margin-top: 40px;
+}
+
+#login-tab-content {
+    margin-bottom: 1rem;
+}

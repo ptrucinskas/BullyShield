@@ -4,7 +4,12 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
     </head>
     <body>
         <div>
@@ -16,11 +21,20 @@
                 </a>|
             {% else %}
             {% endif %}
-                <a href="{{ path('homepage') }}">Messenger</a>
+                {#<a href="{{ path('homepage') }}">Messenger</a>#}
         </div>
+        <div id="heading_div">
+            <img class="logo" src="images/pineapple.png">
+            <h1 class="title-header bd-title">Bully Shield</h1>
+        </div>
+        {{ include("intro.html.twig") }}
+        {#{% block body %}{% endblock %}#}
 
-
-        {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">© X7</span>
+        </div>
+    </footer>
 </html>

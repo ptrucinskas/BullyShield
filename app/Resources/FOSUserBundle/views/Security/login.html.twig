@@ -1,8 +1,30 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <h3>Please login</h3>
-    {{ include("@FOSUser/Security/login_content.html.twig") }}
-    <h3>Or Register</h3>
-    {{ include("@FOSUser/Registration/register_content.html.twig") }}
+    {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        {% block login_register %}
+            <div class="container" id="login_register_div">
+                <div class="login">
+                    <ul class="nav nav-tabs" id="login-tabs" role="tablist">
+                        <li class="nav-item nav-item-login">
+                            <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login"
+                               role="tab" aria-controls="login" aria-selected="true">Login</a>
+                        </li>
+                        <li class="nav-item nav-item-login">
+                            <a class="nav-link" id="register-tab" data-toggle="tab" href="#register"
+                               role="tab" aria-controls="register" aria-selected="false">Register</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="login-tab-content">
+                        <div class="tab-pane fade show active" id="login" role="tabpanel"
+                             aria-labelledby="home-tab">{{ include("@FOSUser/Security/login_content.html.twig") }}</div>
+                        <div class="tab-pane fade" id="register" role="tabpanel"
+                             aria-labelledby="contact-tab"> {{ include("@FOSUser/Registration/register_content.html.twig") }}</div>
+                    </div>
+                    <a href="#" id="goto-intro">Back</a>
+                </div>
+            </div>
+
+        {% endblock login_register %}
+    {% endif %}
 {% endblock body %}
