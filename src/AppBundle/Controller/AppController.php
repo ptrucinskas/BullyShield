@@ -13,18 +13,6 @@ class AppController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $token = $this->get('security.token_storage')->getToken();
-
-        if(!$token->getUser()) {
-            /*
-             *  If User not authenticated
-             */
-            return $this->redirectToRoute('fos_user_security_login');
-        }else{
-            /*
-             *  If User authenticated
-             */
-            return $this->redirectToRoute('fos_message_inbox');
-        }
+        return $this->render("@App/index.html.twig");
     }
 }
