@@ -2,24 +2,27 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Bully Shield{% endblock %}</title>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="icon" type="image/x-icon" href="{{ asset('pineapple.ico?v=1') }}" />
         <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
+        {% block stylesheets %}{% endblock %}
     </head>
     <body>
         <div>
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand" href="/"><img src="/images/pineapple.png" width="30" height="30" class="d-inline-block align-top" alt="">Bully Shield</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <a class="navbar-brand" href="/"><img src="/images/pineapple.svg" width="30" height="30"
+                                                          class="d-inline-block align-top" alt="">Bully Shield</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="collapse navbar-collapse">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active">
                                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
@@ -39,8 +42,11 @@
                         </ul>
                         <div class="navbar-nav">
                             <div class="nav-item">
-                                <a class="nav-link" href="{{ path('fos_user_profile_show') }}">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
-                                    | Profile</a>
+                                <a class="nav-link" href="{{ path('fos_user_profile_show') }}">
+                                    {#{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}#}
+                                    {{ app.user.username }}
+                                    | Profile
+                                </a>
                             </div>
                             <div class="nav-item">
                                 <a class="nav-link" href="{{ path('fos_user_security_logout') }}">
@@ -69,6 +75,13 @@
     <footer class="footer">
         <div class="container">
             <span class="text-muted">© X7</span>
+            <span class="text-muted" style="float: right;">Icons made by
+                <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from
+                <a href="https://www.flaticon.com/" title="Flaticon">
+                    www.flaticon.com</a> is licensed by
+                <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">
+                    CC 3.0 BY</a>
+            </span>
         </div>
     </footer>
 </html>

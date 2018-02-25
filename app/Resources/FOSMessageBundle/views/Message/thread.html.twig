@@ -1,31 +1,55 @@
 {% extends 'base.html.twig' %}
 {% block heading %} {% endblock %}
+{% block title %} {{ thread.subject }} {% endblock %}
 {% block body %}
 
-<h2>{{ thread.subject }}</h2>
+<div id="thread-container">
+    <div id="thread-inner-container">
+        <h2>{{ thread.subject }}</h2>
+        <div id="messages-container">
+            {% for message in thread.messages %}
+            {% if message.sender == app.user.username %}
+            <div class="alert alert-success" role="alert">
+                {% else %}
+                <div class="alert alert-secondary" role="alert">
+                    {% endif %}
+                    <div class="messenger_thread_message">
+                        <div class="messenger_thread_message_info text-muted">
+                            {% trans with {'%sender%': message.sender|e, '%date%': message.createdAt|date} from 'FOSMessageBundle' %}message_info{% endtrans %}
+                        </div>
 
-{% for message in thread.messages %}
-    <div class="messenger_thread_message">
-        <div class="messenger_thread_message_info">
-            {% trans with {'%sender%': message.sender|e, '%date%': message.createdAt|date} from 'FOSMessageBundle' %}message_info{% endtrans %}
+                        <div class="messenger_thread_message_body" id="message_{{ message.id }}">
+                            {{ message.body }}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
         </div>
 
-        <div class="messenger_thread_message_body" id="message_{{ message.id }}">
-            {{ message.body }}
+
+        {#<h5>{% trans from 'FOSMessageBundle' %}reply{% endtrans %}</h5>#}
+
+        <div class="card">
+            <div class="card-body">
+                <form action="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" method="post">
+                    {{ form_widget(form) }}
+
+                    <input class="btn btn-lg btn-primary btn-block" type="submit" value="Send message" />
+                </form>
+            </div>
         </div>
+
     </div>
-{% endfor %}
 
-<h3>{% trans from 'FOSMessageBundle' %}reply{% endtrans %}</h3>
+</div>
 
-<form action="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" method="post">
-    {{ form_widget(form) }}
-
-    <input type="submit" />
-</form>
 
 {% endblock %}
 
 {% block javascripts %}
     <script src="{{ asset('js/thread.js') }}"></script>
+    <script>
+        var objDiv = document.getElementById("messages-container");
+        objDiv.scrollTop = objDiv.scrollHeight;
+    </script>
 {% endblock %}

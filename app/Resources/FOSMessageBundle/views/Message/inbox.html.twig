@@ -1,17 +1,25 @@
 {% extends "base.html.twig" %}
+{% block title %}Bully Shield - Inbox{% endblock %}
+
+{% block stylesheets %}<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" />{% endblock %}
 
 {% block heading %} {% endblock %}
 
 {% block body %}
 
-    <h2>{% trans from 'FOSMessageBundle' %}inbox{% endtrans %}</h2>
+    {#<h2>{% trans from 'FOSMessageBundle' %}inbox{% endtrans %}</h2>#}
 
-    <a href="{{ url('fos_message_thread_new' )}}">{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</a>
 
-    {% include 'FOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads} %}
+    <div id="inbox-container">
+        <a href="{{ url('fos_message_thread_new' )}}" class="btn btn-primary" id="send-message">{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</a>
+        {% include 'FOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads} %}
+    </div>
 
 {% endblock %}
 
 {% block javascripts %}
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
     <script src="{{ asset('js/inbox.js') }}"></script>
 {% endblock %}

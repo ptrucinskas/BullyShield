@@ -1,13 +1,18 @@
 {% extends 'base.html.twig' %}
 {% block heading %} {% endblock %}
+{% block title %} Composing message {% endblock %}
 {% block body %}
 
-<h2>{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</h2>
+{#<h2>{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</h2>#}
 
-<form action="{{ url('fos_message_thread_new') }}" method="post">
-    {{ form_widget(form) }}
+<div id="new-message-container">
+    <div id="new-message-inner-container">
+        <form action="{{ url('fos_message_thread_new') }}" method="post">
+            {{ form_widget(form) }}
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Send message"/>
+        </form>
+    </div>
+</div>
 
-    <input type="submit" />
-</form>
 
 {% endblock %}
