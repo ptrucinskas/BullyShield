@@ -9,3 +9,7 @@
     {% include 'FOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads} %}
 
 {% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/inbox.js') }}"></script>
+{% endblock %}
