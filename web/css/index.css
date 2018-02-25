@@ -103,3 +103,8 @@ body {
 #login-tab-content {
     margin-bottom: 1rem;
 }
+
+.nav-right {
+    /*display: flex;*/
+    /*flex-direction: row;*/
+}

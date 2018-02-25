@@ -15,5 +15,8 @@
         interaction safe again!
     </p>
     <br>
-    <a href="#" id="goto-login">Register or Login now!</a>
+    {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <a href="/login" id="goto-login">Register or Login now!</a>
+    {% endif %}
 </div>
+
