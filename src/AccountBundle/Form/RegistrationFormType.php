@@ -12,13 +12,12 @@ class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('guardian');//,
-       /*     LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'),
+        $builder->add('guardian', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'),
             array(
-                'label' => 'form.guardian_email',
+                'label' => 'Guardian email',
                 'translation_domain' => 'FOSUserBundle'
             )
-        );*/
+        );
     }
 
     public function getParent()
