@@ -1,8 +1,8 @@
 imports:
+    - { resource: "@AccountBundle/Resources/config/services.yml" }
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
-    - { resource: "@AccountBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -70,6 +70,9 @@ fos_user:
     from_email:
         address: "place@holder.com"
         sender_name: "Placeholder"
+    registration:
+        form:
+            type: AccountBundle\Form\RegistrationFormType
 
 fos_message:
     db_driver: orm
