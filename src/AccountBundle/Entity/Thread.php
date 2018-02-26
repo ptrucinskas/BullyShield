@@ -2,6 +2,7 @@
 
 namespace AccountBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use FOS\MessageBundle\Entity\Thread as BaseThread;
@@ -56,6 +57,28 @@ class Thread extends BaseThread
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $lastUpdated;
+
+    public function setLastUpdated()
+    {
+        $this->lastUpdated = new \DateTime("now");
+    }
+
+    public function getLastUpdated()
+    {
+        return $this->lastUpdated;
+    }
+
+    public function __construct()
+    {
+        $this->messages = new ArrayCollection();
+        $this->metadata = new ArrayCollection();
+        $this->lastUpdated = new \DateTime("now");
     }
 }
 
