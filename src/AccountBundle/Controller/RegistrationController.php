@@ -20,7 +20,7 @@ use FOS\UserBundle\Controller\RegistrationController as BaseController;
 
 class RegistrationController extends BaseController
 {
-    public function confirmedAction(Request $request)
+    public function confirmedAction()
     {
         return $this->redirectToRoute('fos_message_inbox');
     }
