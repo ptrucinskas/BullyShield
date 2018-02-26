@@ -67,6 +67,7 @@ class Thread extends BaseThread
     public function setLastUpdated()
     {
         $this->lastUpdated = new \DateTime("now");
+        return $this;
     }
 
     public function getLastUpdated()

@@ -33,3 +33,8 @@ services:
         class: AccountBundle\Form\RegistrationFormType
         tags:
             - { name: form.type, alias: account_user_registration }
+
+
+    AccountBundle\EventListener\MessageSentListener:
+        tags:
+            - {name: doctrine.event_listener, event: postPersist}
