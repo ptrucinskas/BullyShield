@@ -6,7 +6,6 @@
 {% block heading %} {% endblock %}
 
 {% block body %}
-
     {#<h2>{% trans from 'FOSMessageBundle' %}inbox{% endtrans %}</h2>#}
 
 
@@ -22,4 +21,9 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 
     <script src="{{ asset('js/inbox.js') }}"></script>
+
+    <script>
+        var navItem = document.getElementById("inbox-nav-item");
+        navItem.classList.add("active");
+    </script>
 {% endblock %}

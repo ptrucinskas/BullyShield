@@ -3,3 +3,10 @@
 {% block body %}
 {% include "@FOSUser/Profile/show_content.html.twig" %}
 {% endblock body %}
+{% block javascripts %}
+    <script>
+        var navItem = document.getElementById("profile-nav-item");
+        navItem.classList.add("active");
+    </script>
+{% endblock %}
+
