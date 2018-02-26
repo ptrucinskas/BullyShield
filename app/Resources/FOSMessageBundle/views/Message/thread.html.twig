@@ -2,30 +2,51 @@
 {% block heading %} {% endblock %}
 {% block body %}
 
-<h2>{{ thread.subject }}</h2>
+    <h2>{{ thread.subject }}</h2>
 
-{% for message in thread.messages %}
-    <div class="messenger_thread_message">
-        <div class="messenger_thread_message_info">
-            {% trans with {'%sender%': message.sender|e, '%date%': message.createdAt|date} from 'FOSMessageBundle' %}message_info{% endtrans %}
+    {% for message in thread.messages %}
+        <div class="messenger_thread_message">
+            <div class="messenger_thread_message_info">
+                {% trans with {'%sender%': message.sender|e, '%date%': message.createdAt|date} from 'FOSMessageBundle' %}message_info{% endtrans %}
+            </div>
+
+            <div class="messenger_thread_message_body" id="message_{{ message.id }}">
+                {{ message.body }}
+            </div>
         </div>
+    {% endfor %}
 
-        <div class="messenger_thread_message_body" id="message_{{ message.id }}">
-            {{ message.body }}
-        </div>
-    </div>
-{% endfor %}
+    <h3>{% trans from 'FOSMessageBundle' %}reply{% endtrans %}</h3>
 
-<h3>{% trans from 'FOSMessageBundle' %}reply{% endtrans %}</h3>
+    <form action="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" method="post">
+        {{ form_widget(form) }}
 
-<form action="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" method="post">
-    {{ form_widget(form) }}
+        <input type="submit" />
+    </form>
 
-    <input type="submit" />
-</form>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        setInterval(function(){
+            $.ajax({
+                url: "{{ (path('ajax_update_messages')) }}",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    "thread_id": {{ thread.id }},
+                    "last_update": "{{thread.lastUpdated|date("H/i/s/d/m/Y")}}"
+                },
+                success: function (data)
+                {
+                    if(data == "Refresh")
+                        location.reload();
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Status: " + textStatus); alert("Error: " + errorThrown);
+                }
+            });
 
-{% endblock %}
+        }, 5000);
+    </script>
 
-{% block javascripts %}
-    <script src="{{ asset('js/thread.js') }}"></script>
+
 {% endblock %}
