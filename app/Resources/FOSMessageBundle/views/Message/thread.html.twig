@@ -5,6 +5,7 @@
 
 <div id="thread-container">
     <div id="thread-inner-container">
+        <a href="/messaging" class="btn btn-secondary messaging-back-button">⬅️ back to inbox</a>
         <h2>{{ thread.subject }}</h2>
         <div id="messages-container">
             {% for message in thread.messages %}
@@ -25,7 +26,6 @@
                 </div>
                 {% endfor %}
         </div>
-
 
         {#<h5>{% trans from 'FOSMessageBundle' %}reply{% endtrans %}</h5>#}
 

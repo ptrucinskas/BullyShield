@@ -1,30 +1,44 @@
 {% extends "base.html.twig" %}
 {% block title %} Login/Register {% endblock %}
 {% block body %}
-    {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-        {% block login_register %}
-            <div class="container" id="login_register_div">
-                <div class="login">
-                    <ul class="nav nav-tabs" id="login-tabs" role="tablist">
-                        <li class="nav-item nav-item-login">
-                            <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login"
-                               role="tab" aria-controls="login" aria-selected="true">Login</a>
-                        </li>
-                        <li class="nav-item nav-item-login">
-                            <a class="nav-link" id="register-tab" data-toggle="tab" href="#register"
-                               role="tab" aria-controls="register" aria-selected="false">Register</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="login-tab-content">
-                        <div class="tab-pane fade show active" id="login" role="tabpanel"
-                             aria-labelledby="home-tab">{{ include("@FOSUser/Security/login_content.html.twig") }}</div>
-                        <div class="tab-pane fade" id="register" role="tabpanel"
-                             aria-labelledby="contact-tab"> {{ include("@FOSUser/Registration/register_content.html.twig") }}</div>
+    <div class="container intro-div">
+        {% block heading %}
+            {{ parent() }}
+        {% endblock %}
+        {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {% block login_register %}
+                <div class="container" id="login_register_div">
+                    <div class="login">
+                        <ul class="nav nav-tabs" id="login-tabs" role="tablist">
+                            <li class="nav-item nav-item-login">
+                                <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login"
+                                   role="tab" aria-controls="login" aria-selected="true">Login</a>
+                            </li>
+                            <li class="nav-item nav-item-login">
+                                <a class="nav-link" id="register-tab" data-toggle="tab" href="#register"
+                                   role="tab" aria-controls="register" aria-selected="false">Register</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="login-tab-content">
+                            <div class="tab-pane fade show active" id="login" role="tabpanel"
+                                 aria-labelledby="home-tab">{{ include("@FOSUser/Security/login_content.html.twig") }}</div>
+                            <div class="tab-pane fade" id="register" role="tabpanel"
+                                 aria-labelledby="contact-tab"> {{ include("@FOSUser/Registration/register_content.html.twig") }}</div>
+                        </div>
+                        <div class="text-center">
+                            <a href="/" id="goto-intro">Back</a>
+                        </div>
                     </div>
-                    <a href="/" id="goto-intro">Back</a>
                 </div>
-            </div>
 
-        {% endblock login_register %}
-    {% endif %}
+            {% endblock login_register %}
+        {% endif %}
+    </div>
 {% endblock body %}
+
+{% block javascripts %}
+    <script>
+        var navItem = document.getElementById("login-register-nav-item");
+        navItem.classList.add("active");
+    </script>
+{% endblock %}
