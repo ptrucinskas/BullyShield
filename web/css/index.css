@@ -1,11 +1,15 @@
 html,
 body {
     height: 100%;
+    overflow: hidden;
 }
 
 body {
     background-color: #f5f5f5;
     /*margin-bottom: 60px;*/
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .title-header {
@@ -16,6 +20,30 @@ body {
 .login {
     min-width: 500px;
     margin-top: 30px;
+}
+
+.body-container {
+    width: 100%;
+    /*height: 100%;*/
+    /*overflow-y: auto;*/
+}
+
+html body .body-container {
+    position: absolute;
+    top: 60px;
+    bottom: 60px;
+    right: 0;
+    left: 0;
+    overflow-y: auto;
+}
+
+
+@media screen and (min-height: 800px) {
+    .body-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 #login_register_div {
@@ -65,7 +93,8 @@ body {
     align-items: center;
     -webkit-box-pack: center;
     justify-content: center;
-    padding-top: 100px;
+    /*padding-top: 100px;*/
+    margin-bottom: 30px;
 }
 
 #reset {
@@ -83,17 +112,8 @@ body {
 
 .intro-div {
     max-width: 600px;
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: flex;
-    flex-direction: column;
-    -ms-flex-align: center;
-    -ms-flex-pack: center;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    height: 60%;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
 
 #goto-login, #goto-intro {
@@ -107,4 +127,49 @@ body {
 .nav-right {
     /*display: flex;*/
     /*flex-direction: row;*/
+}
+
+#inbox-container {
+    width: 70%;
+    margin: 0 auto;
+}
+
+#send-message {
+    margin-left: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#new-message-container, #thread-container {
+    /*width: 50%;*/
+    /*margin: 0 auto;*/
+    height: 80%;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+
+#new-message-inner-container, #thread-inner-container {
+    width: 30%;
+    min-width: 400px;
+}
+
+#messages-container {
+    /*height: 300px;*/
+    max-height: 40vh;
+    overflow: auto;
+}
+
+#new-message-alert {
+    background-color: #ffeeba;
+}
+
+.messaging-back-button {
+    margin-bottom: 30px;
 }

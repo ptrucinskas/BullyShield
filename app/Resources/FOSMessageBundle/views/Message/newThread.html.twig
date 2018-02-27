@@ -1,13 +1,26 @@
 {% extends 'base.html.twig' %}
 {% block heading %} {% endblock %}
+{% block title %} Composing message {% endblock %}
 {% block body %}
 
-<h2>{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</h2>
+{#<h2>{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</h2>#}
 
-<form action="{{ url('fos_message_thread_new') }}" method="post">
-    {{ form_widget(form) }}
+<div id="new-message-container">
+    <div id="new-message-inner-container">
+        <a href="/messaging" class="btn btn-secondary messaging-back-button">⬅️ back to inbox</a>
+        <form action="{{ url('fos_message_thread_new') }}" method="post">
+            {{ form_widget(form) }}
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Send message"/>
+        </form>
+    </div>
+</div>
 
-    <input type="submit" />
-</form>
 
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        var navItem = document.getElementById("inbox-nav-item");
+        navItem.classList.add("active");
+    </script>
 {% endblock %}

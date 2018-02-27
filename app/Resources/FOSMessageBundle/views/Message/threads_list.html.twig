@@ -1,11 +1,11 @@
-<table>
+<table id="inbox" class="table table-striped table-bordered" cellspacing="0">
 
     <thead>
         <tr>
             <th>{% trans from 'FOSMessageBundle' %}subject{% endtrans %}</th>
             <th>{% trans from 'FOSMessageBundle' %}starter{% endtrans %}</th>
-            <th>{% trans from 'FOSMessageBundle' %}startdate{% endtrans %}</th>
             <th>{% trans from 'FOSMessageBundle' %}messages{% endtrans %}</th>
+            <th>{% trans from 'FOSMessageBundle' %}startdate{% endtrans %}</th>
             <th>{% trans from 'FOSMessageBundle' %}last_message{% endtrans %}</th>
         </tr>
     </thead>
@@ -14,7 +14,11 @@
 
     {% if threads %}
         {% for thread in threads %}
-            <tr>
+            {% if not fos_message_is_read(thread) %}
+                <tr id="new-message-alert">
+            {% else %}
+                <tr>
+            {% endif %}
                 <td>
                     <a href="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}">
                         {{ thread.subject }}
@@ -28,10 +32,10 @@
                     {{ thread.createdBy }}
                 </td>
                 <td>
-                    {{ thread.createdAt|date }}
+                    {{ thread.messages|length }}
                 </td>
                 <td>
-                    {{ thread.messages|length }}
+                    {{ thread.createdAt|date }}
                 </td>
                 <td>
                     {% if thread.lastMessage %}

@@ -1,22 +1,21 @@
-<div class="container intro-div">
+<div class="container">
     {#<h2>What BullyShield does?...</h2>#}
     {#<br>#}
     <p>
-        We form our values from our interactions with people. We tend to be
-        influenced by ideas, words and human interaction. Without knowing, we form
-        perceptions about ourselves or about the others. Without knowing, be become
-        either a bully or a victim...
+        At BullyShield, we believe that we form our values and perceptions of the outside world, through conversations with other people. The conversations we have with people, allow us to gain a greater understanding of the world that is around us. Unfortunately, some of these conversations can be potentially harmful for your child, both physically and mentally. Sometimes, without even knowing it, we can become a bully or be bullied.
         <br>
         <br>
-        BullyShield solves this problem. By taking care of what tipe of messages
-        your kid receives or sends in an online environment, we can notice you about
-        his/hers behaviour so you, as a parent, can take care of him.
-        We are the future of chats! We make the internet and the online
-        interaction safe again!
+        Our mission is to create a safe space to enjoy and appreciate the internet, and the conversations with other people. We are not here to solve bullying, nor do we claim to do that! However, we do want to provide a service that can help you, to stay safe online.
+        <br>
+        <br>
+        Thanks,
+        <br>
+        BullyShield DevTeam
     </p>
-    <br>
     {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    <div class="text-center">
         <a href="/login" id="goto-login">Register or Login now!</a>
+    </div>
     {% endif %}
 </div>
 
