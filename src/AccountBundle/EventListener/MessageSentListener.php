@@ -8,7 +8,6 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 
 class MessageSentListener
 {
-
     public function postPersist(LifecycleEventArgs $args){
         $entity = $args->getEntity();
 

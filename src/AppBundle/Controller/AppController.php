@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use AccountBundle\Entity\Message;
 use AccountBundle\Entity\Thread;
+use AccountBundle\Entity\ThreadMetadata;
+use AccountBundle\Entity\User;
 use Symfony\Component\Intl\Tests\Data\Provider\Json\JsonRegionDataProviderTest;
 
 class AppController extends Controller
@@ -37,16 +39,12 @@ class AppController extends Controller
         }else{
             return new JsonResponse("Messages up to date");
         }
-
     }
 
     /**
      * @Route("/ajax_update_threads", name="ajax_update_threads")
      */
     public function refreshThreadListAction(Request $request){
-
+        return new JsonResponse("Messages up to date");
     }
-
-
-
 }
