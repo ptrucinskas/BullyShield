@@ -47,4 +47,29 @@ class AppController extends Controller
     public function refreshThreadListAction(Request $request){
         return new JsonResponse("Messages up to date");
     }
+
+    /**
+     * @Route("/faq", name="faq")
+     */
+    public function faqAction(Request $request)
+    {
+        return $this->render("@App/faq.html.twig");
+    }
+
+
+    /**
+     * @Route("/about_us", name="about_us")
+     */
+    public function aboutUsAction(Request $request)
+    {
+        return $this->render("@App/about.html.twig");
+    }
+
+    /**
+     * @Route("/contact_us", name="contact_us")
+     */
+    public function contactUsAction(Request $request)
+    {
+        return $this->render("@App/contact.html.twig");
+    }
 }
