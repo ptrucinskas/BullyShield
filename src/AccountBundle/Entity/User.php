@@ -42,6 +42,36 @@ class User extends BaseUser implements ParticipantInterface
     protected $flag;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="score", type="integer", options={"default" : 0})
+     */
+    protected $score;
+
+    /**
+     * Get score
+     *
+     * @return score
+     */
+    public function getScore()
+    {
+        return $this->score;
+    }
+
+    /**
+     * Set score
+     *
+     * @param boolean $score
+     *
+     * @return User
+     */
+    public function setScore($score)
+    {
+        $this->score = $score;
+        return $this;
+    }
+
+    /**
      * Get flag
      *
      * @return boolean
