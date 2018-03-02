@@ -49,6 +49,36 @@ class Message extends BaseMessage
     protected $metadata;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="flag", type="boolean", options={"default" : false})
+     */
+    protected $flag;
+
+    /**
+     * Get flag
+     *
+     * @return boolean
+     */
+    public function getFlag()
+    {
+        return $this->flag;
+    }
+
+    /**
+     * Set flag
+     *
+     * @param boolean $flag
+     *
+     * @return Message
+     */
+    public function setFlag($flag)
+    {
+        $this->flag = $flag;
+        return $this;
+    }
+
+    /**
      * Get id
      *
      * @return int
