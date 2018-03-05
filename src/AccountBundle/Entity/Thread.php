@@ -108,6 +108,7 @@ class Thread extends BaseThread
     {
         $this->messages = new ArrayCollection();
         $this->metadata = new ArrayCollection();
+        $this->setFlag(false);
         $this->lastUpdated = new \DateTime("now");
     }
 }

@@ -4,6 +4,7 @@ namespace AccountBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\MessageBundle\Entity\Message as BaseMessage;
 
 /**
@@ -86,6 +87,13 @@ class Message extends BaseMessage
     public function getId()
     {
         return $this->id;
+    }
+
+    public function __construct()
+    {
+        $this->setFlag(false);
+        $this->createdAt = new \DateTime();
+        $this->metadata = new ArrayCollection();
     }
 }
 
