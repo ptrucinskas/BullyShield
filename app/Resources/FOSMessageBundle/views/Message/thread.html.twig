@@ -34,7 +34,7 @@
                 <form action="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" method="post">
                     {{ form_widget(form) }}
 
-                    <input class="btn btn-lg btn-primary btn-block" type="submit" value="Send message" />
+                    <input class="btn btn-lg btn-primary btn-block" type="submit" value="Send message" onclick="refreshing = true"/>
                 </form>
             </div>
         </div>
@@ -57,7 +57,9 @@
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script>
+        refreshing = false;
         setInterval(function(){
+            if(!refreshing)
             $.ajax({
                 url: "{{ (path('ajax_update_messages')) }}",
                 type: "POST",
