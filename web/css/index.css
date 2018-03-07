@@ -12,6 +12,10 @@ body {
     flex-direction: column;
 }
 
+header {
+    z-index: 999;
+}
+
 .title-header {
     /*margin: 0 auto;*/
     text-align: center;
