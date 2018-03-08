@@ -1,6 +1,7 @@
 <?php
 
 namespace AccountBundle\EventListener;
+use Icicle\Coroutine\Coroutine;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
@@ -21,9 +22,10 @@ class MessageSentListener
         $em->getRepository(Thread::class)->find($threadId)->setLastUpdated();
         $em->flush();
 
-        $messageID = $entity->getId();
-
-        $process = new Process("python py/ProcessMessage.py $messageID");
+        $id = $entity->getId();
+        $userId = $entity->getSender()->getId();
+        $process = new Process("python py/ProcessMessage.py $id $userId");
         $process->start();
+        return true;
     }
 }

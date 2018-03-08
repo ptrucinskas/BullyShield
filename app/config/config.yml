@@ -58,10 +58,10 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: '%mailer_transport%'
-    host: '%mailer_host%'
-    username: '%mailer_user%'
-    password: '%mailer_password%'
+    transport: gmail
+    #host: '%mailer_host%'
+    username: 'bully.shield.csx7'
+    password: 'csx7csx7'
     spool: { type: memory }
 
 fos_user:
@@ -69,8 +69,8 @@ fos_user:
     firewall_name: main
     user_class: AccountBundle\Entity\User
     from_email:
-        address: "place@holder.com"
-        sender_name: "Placeholder"
+        address: "bully.shield.csx7@gmail.com"
+        sender_name: "Bully Shield"
     registration:
         form:
             type: AccountBundle\Form\RegistrationFormType
