@@ -42,6 +42,19 @@ class AppController extends Controller
     }
 
     /**
+     * @Route("/ajax_receiver_flag/{messageId}", name="ajax_receiver_flag")
+     */
+    public function receiverFlagAction($messageId){
+        $em = $this->getDoctrine()->getManager();
+        $em->getRepository(Message::class)
+           ->find($messageId)
+           ->setReceiverFlag();
+        $em->flush();
+
+        return new JsonResponse("Successful");
+    }
+
+    /**
      * @Route("/ajax_update_threads", name="ajax_update_threads")
      */
     public function refreshThreadListAction(Request $request){
@@ -54,15 +67,6 @@ class AppController extends Controller
     public function faqAction(Request $request)
     {
         return $this->render("@App/faq.html.twig");
-    }
-
-
-    /**
-     * @Route("/about_us", name="about_us")
-     */
-    public function aboutUsAction(Request $request)
-    {
-        return $this->render("@App/about.html.twig");
     }
 
     /**

@@ -9,9 +9,18 @@
         <h2>{{ thread.subject }}</h2>
         <div id="messages-container">
             {% for message in thread.messages %}
+
+            {#
+            Flags should be indicated
+
+            {% if message.flag %}{% endif %} - regular flag by algorithm
+            {% if message.receiverflag %}{% endif %} - flag by receiver
+            #}
+
             {% if message.sender == app.user.username %}
             <div class="alert alert-success" role="alert">
                 {% else %}
+                <button id="receiver_flag" value="{{ message.id }}">Flag</button>
                 <div class="alert alert-secondary" role="alert">
                     {% endif %}
                     <div class="messenger_thread_message">
@@ -76,5 +85,23 @@
             });
 
         }, 5000);
+
+        $(function () {
+            $('button#receiver_flag').on('click', function () {
+                var messageId = $(this).val();
+                $.ajax({
+                        url: "/ajax_receiver_flag/" + messageId,
+                        type: "POST",
+                        dataType: "json",
+                        data: {
+                            "message_id": messageId
+                        },
+                        success: function (data)
+                        {
+                            // Indicate success
+                        }
+                    });
+                });
+            });
     </script>
 {% endblock %}

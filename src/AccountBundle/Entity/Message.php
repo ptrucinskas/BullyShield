@@ -56,6 +56,14 @@ class Message extends BaseMessage
      */
     protected $flag;
 
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="receiverFlag", type="boolean", options={"default" : false})
+     */
+    protected $receiverFlag;
+
     /**
      * Get flag
      *
@@ -76,6 +84,29 @@ class Message extends BaseMessage
     public function setFlag($flag)
     {
         $this->flag = $flag;
+        return $this;
+    }
+
+    /**
+     * Get receiverFlag
+     *
+     * @return boolean
+     */
+    public function getReceiverFlag()
+    {
+        return $this->receiverFlag;
+    }
+
+    /**
+     * Set receiverFlag
+     *
+     * @param boolean $receiverFlag
+     *
+     * @return Message
+     */
+    public function setReceiverFlag()
+    {
+        $this->receiverFlag = !($this->receiverFlag);
         return $this;
     }
 

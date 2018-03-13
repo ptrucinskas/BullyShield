@@ -27,6 +27,7 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_NO_ACCESS }
         - { path: ^/profile/edit, role: ROLE_NO_ACCESS }
+        - { path: ^/profile, role: ROLE_NO_ACCESS }
         - { path: ^/profile/change-password, role: ROLE_NO_ACCESS }
         - { path: ^/resetting, role: ROLE_NO_ACCESS }
         - { path: ^/messaging/sent, role: ROLE_NO_ACCESS }

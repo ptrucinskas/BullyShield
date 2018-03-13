@@ -45,7 +45,6 @@ doctrine:
     dbal:
         driver: pdo_mysql
         host: '52.23.237.31'
-        #port: ''
         dbname: 'bullyshield_website'
         user: 'bullyshieldadmin'
         password: 'csx7'
@@ -60,7 +59,7 @@ doctrine:
 swiftmailer:
     transport: gmail
     #host: '%mailer_host%'
-    username: 'bully.shield.csx7'
+    username: 'bully.shield.csx7@gmail.com'
     password: 'csx7csx7'
     spool: { type: memory }
 
