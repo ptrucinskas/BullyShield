@@ -1,8 +1,4 @@
-{% extends 'base.html.twig' %}
-
-{% block body %}
-    <h1>You don't have access to this page</h1>
-
-    <p>The requested page can't be loaded at this time.
-        <a href="{{ path('homepage') }}">Return to the homepage</a>.</p>
-{% endblock %}
+{% extends 'error_base.html.twig' %}
+{% block first_digit %} 4 {% endblock %}
+{% block last_digit %} 3 {% endblock %}
+{% block error_message %} Access Denied {% endblock %}

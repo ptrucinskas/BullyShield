@@ -5,7 +5,7 @@
 
 <div id="thread-container">
     <div id="thread-inner-container">
-        <a href="/messaging" class="btn btn-secondary messaging-back-button">⬅️ back to inbox</a>
+        <a href="/messaging" class="btn btn-secondary messaging-back-button">Back to Inbox</a>
         <h2>{{ thread.subject }}</h2>
         <div id="messages-container">
             {% for message in thread.messages %}
@@ -17,15 +17,23 @@
             {% if message.receiverflag %}{% endif %} - flag by receiver
             #}
 
-            {% if message.sender == app.user.username %}
-            <div class="alert alert-success" role="alert">
+                {% if message.sender == app.user.username %}
+                    {% set sender = 'You' %}
+                    <div class="alert alert-success" id="msg-container" role="alert">
                 {% else %}
-                <button id="receiver_flag" value="{{ message.id }}">Flag</button>
-                <div class="alert alert-secondary" role="alert">
-                    {% endif %}
+                    {% set sender = message.sender %}
+                    <div class="alert alert-secondary" id="msg-container" role="alert">
+                {% endif %}
                     <div class="messenger_thread_message">
                         <div class="messenger_thread_message_info text-muted">
-                            {% trans with {'%sender%': message.sender|e, '%date%': message.createdAt|date} from 'FOSMessageBundle' %}message_info{% endtrans %}
+                            {% trans with {'%sender%': sender|e, '%date%': message.createdAt|date} from 'FOSMessageBundle' %}message_info{% endtrans %}
+                            {#<a class="text-danger float-right" id="receiver_flag" value="{{ message.id }}">#}
+                                {#<i class="fas fa-exclamation-triangle"></i>#}
+                                {#<i class="far fa-flag"></i>#}
+                            {#</a>#}
+                               <button type="button" id="receiver_flag" value={{ message.id }} class="hover-reveal">
+                                   <b><i class="far fa-flag"></i></b><a href="#"><i>Flag as bullying</i></a>
+                               </button>
                         </div>
 
                         <div class="messenger_thread_message_body" id="message_{{ message.id }}">
@@ -33,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-                {% endfor %}
+            {% endfor %}
         </div>
 
         {#<h5>{% trans from 'FOSMessageBundle' %}reply{% endtrans %}</h5>#}
@@ -103,5 +111,61 @@
                     });
                 });
             });
+    </script>
+
+    <script>
+        var bgcolor = '#ddd';
+        $(".alert").on("mouseenter", function(e) {
+
+            bgcolor = rgb2hex($(this).css("background-color"));
+         });
+
+        $(".hover-reveal").on("mouseenter", function(e) {
+            $(this).css('background', LightenDarkenColor(bgcolor,-30));
+         });
+
+        $(".hover-reveal").on("mouseleave", function(e) {
+            $(this).css('background', 'transparent');
+        });
+
+        function rgb2hex(rgb) {
+            if (/^#[0-9A-F]{6}$/i.test(rgb)) return rgb;
+
+            rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+            function hex(x) {
+                return ("0" + parseInt(x).toString(16)).slice(-2);
+            }
+            return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+        }
+
+
+        function LightenDarkenColor(col, amt) {
+            var usePound = false;
+
+            if (col[0] == "#") {
+                col = col.slice(1);
+                usePound = true;
+            }
+
+            var num = parseInt(col,16);
+
+            var r = (num >> 16) + amt;
+
+            if (r > 255) r = 255;
+            else if  (r < 0) r = 0;
+
+            var b = ((num >> 8) & 0x00FF) + amt;
+
+            if (b > 255) b = 255;
+            else if  (b < 0) b = 0;
+
+            var g = (num & 0x0000FF) + amt;
+
+            if (g > 255) g = 255;
+            else if (g < 0) g = 0;
+
+            return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
+
+        }
     </script>
 {% endblock %}

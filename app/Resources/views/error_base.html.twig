@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container intro-div error-status-header">
+        <div class="d-flex">
+            <h1 class="font-size-12em">{% block first_digit %}{% endblock %}</h1>
+            <img class="logo-error fade-grayscale" src={{ asset('images/pineapple.svg') }}/>
+            <h1 class="font-size-12em">{% block last_digit %}{% endblock %}</h1>
+        </div>
+        <h1 class="text-center">{% block error_message %}Something went wrong! {% endblock %}</h1>
+        <br>
+        <div class="text-center ">
+            <a class="btn btn-primary btn-lg" id="go-back-btn" href="javascript:history.back()" role="button">Go Back</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        // remove active states from navbar
+        $('.navbar-nav').on('click', 'li', function() {
+            $('.nav-list li.active').removeClass('active');
+            // $(this).addClass('active');
+        });
+    </script>
+{% endblock %}
