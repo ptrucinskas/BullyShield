@@ -1,5 +1,6 @@
 import string
 import collections
+import os
 
 '''
 For now this program reads through the user terminal input and compares it with
@@ -25,7 +26,10 @@ def bayes_main(chat_message):
 
 
 def split_to_lines():
-  blacklist = open("Data/Blacklist.txt").read().splitlines()
+  script_dir = os.path.dirname(__file__)
+  rel_path = "../Data/Blacklist.txt"
+  abs_file_path = os.path.join(script_dir, rel_path)
+  blacklist = open(abs_file_path).read().splitlines()
 # An empty list to store each dictionaries of blacklisted words.
   
 # Split each lines by tabs.
