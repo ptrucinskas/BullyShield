@@ -31,9 +31,11 @@
                                 {#<i class="fas fa-exclamation-triangle"></i>#}
                                 {#<i class="far fa-flag"></i>#}
                             {#</a>#}
+                            {% if message.sender != app.user.username %}
                                <button type="button" id="receiver_flag" value={{ message.id }} class="hover-reveal">
                                    <b><i class="far fa-flag"></i></b><a href="#"><i>Flag as bullying</i></a>
                                </button>
+                            {% endif %}
                         </div>
 
                         <div class="messenger_thread_message_body" id="message_{{ message.id }}">
