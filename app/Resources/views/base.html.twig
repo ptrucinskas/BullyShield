@@ -6,72 +6,70 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
+        <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <link rel="icon" type="image/x-icon" href="{{ asset('pineapple.ico?v=1') }}" />
         <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-            <header>
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand" href="/">
-                        <img src="/images/pineapple.svg" width="30" height="30"
-                                                          class="d-inline-block align-top" alt="">Bully Shield
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item" id="home-nav-item">
-                                <a class="nav-link" href="/">Home
-                                    <span class="sr-only">(current)</span></a>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="/">
+                    <img src="/images/pineapple.svg" width="30" height="30"
+                                                      class="d-inline-block align-top" alt="">Bully Shield
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item" id="home-nav-item">
+                            <a class="nav-link" href="/">Home
+                                <span class="sr-only">(current)</span></a>
+                        </li>
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <li class="nav-item" id="inbox-nav-item">
+                                <a class="nav-link" href="{{ path('fos_message_inbox') }}">Messaging</a>
                             </li>
-                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                <li class="nav-item" id="inbox-nav-item">
-                                    <a class="nav-link" href="{{ path('fos_message_inbox') }}">Messaging</a>
-                                </li>
-                            {% endif %}
-                            <li class="nav-item" id="faq-nav-item">
-                                <a class="nav-link" href="{{ path('faq') }}">FAQ</a>
-                            </li>
-                            <li class="nav-item" id="contact-nav-item">
-                                <a class="nav-link" href="{{ path('contact_us') }}">Contact Us</a>
-                            </li>
-                        </ul>
-                        <div class="navbar-nav">
-                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                <div class="nav-item" id="profile-nav-item">
-                                    <a class="nav-link" href="#">
-                                        {#{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}#}
-                                        {{ app.user.username }}
-                                        | Profile
-                                    </a>
-                                </div>
-                                <div class="nav-item" id="logout-nav-item">
-                                    <a class="nav-link" href="{{ path('fos_user_security_logout') }}">
-                                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                                    </a>
-                                </div>
-                            {% else %}
-                                <div class="nav-item" id="login-register-nav-item">
-                                    <a class="nav-link" href="/login">
-                                        Login/Register
-                                    </a>
-                                </div>
-                            {% endif %}
-                        </div>
+                        {% endif %}
+                        <li class="nav-item" id="faq-nav-item">
+                            <a class="nav-link" href="{{ path('faq') }}">FAQ</a>
+                        </li>
+                        <li class="nav-item" id="contact-nav-item">
+                            <a class="nav-link" href="{{ path('contact_us') }}">Contact Us</a>
+                        </li>
+                    </ul>
+                    <div class="navbar-nav">
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <div class="nav-item" id="profile-nav-item">
+                                <span class="nav-link">
+                                    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
+                                    {#{{ app.user.username }}#}
+                                </span>
+                            </div>
+                            <div class="nav-item" id="logout-nav-item">
+                                <a class="nav-link" href="{{ path('fos_user_security_logout') }}">
+                                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                </a>
+                            </div>
+                        {% else %}
+                            <div class="nav-item" id="login-register-nav-item">
+                                <a class="nav-link" href="/login">
+                                    Login/Register
+                                </a>
+                            </div>
+                        {% endif %}
                     </div>
-                </nav>
-            </header>
-
+                </div>
+            </nav>
+        </header>
         <div class="body-container">
             {% block body %}
                 <div class="container intro-div">
                 {% block heading %}
-                    <div id="heading_div">
+                    <div id="heading-div">
                         <img class="logo" src="images/pineapple.png">
                         <h1 class="title-header bd-title">Welcome to Bully Shield</h1>
                     </div>
@@ -90,13 +88,13 @@
     <footer class="footer">
         <div class="container">
             <span class="text-muted">© X7</span>
-            {#<span class="text-muted" style="float: right;">Icons made by#}
-                {#<a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from#}
-                {#<a href="https://www.flaticon.com/" title="Flaticon">#}
-                    {#www.flaticon.com</a> is licensed by#}
-                {#<a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">#}
-                    {#CC 3.0 BY</a>#}
-            {#</span>#}
+            <span class="text-muted" style="float: right;">Icons made by
+                <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from
+                <a href="https://www.flaticon.com/" title="Flaticon">
+                    www.flaticon.com</a> is licensed by
+                <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">
+                    CC 3.0 BY</a>
+            </span>
         </div>
     </footer>
 </html>

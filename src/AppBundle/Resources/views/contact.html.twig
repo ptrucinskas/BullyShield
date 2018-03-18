@@ -1,32 +1,56 @@
 {% extends "base.html.twig" %}
-
-{% block intro %}
-<body>
-  <div class="header";>
+{% block title %} Contact Us {% endblock %}
+{% block body %}
+<div class="container">
+  <div id="heading_div">
+    <i class="fas fa-phone heading-icon heading-icon-90-deg"></i>
     <h1>Contact us</h1>
   </div>
 
-  <div>
-    <h3>Jia Sheng Liang</h3>
-    <p>jiasheng.liang</p>
-
-    <h3>Mohamad Hosein Miraftabi</h3>
-    <p>mohamad.miraftabi@student.manchester.ac.uk</p>
-
-    <h3>Kane Moss</h3>
-    <p>kane.moss@student.manchester.ac.uk</p>
-
-    <h3>Steeve Moussa</h3>
-    <p>steeve.moussa@student.manchester.ac.uk</p>
-
-    <h3>Alasdair Olway</h3>
-    <p>alasdair.olway@student.manchester.ac.uk</p>
-
-    <h3>Teodor Stefan Pintea</h3>
-    <p>teodor.pintea@student.manchester.ac.uk</p>
-
-    <h3>Paulius Trucinskas</h3>
-    <p>paulius.trucinskas@student.manchester.ac.uk</p>
+  <div class="container" id="contact-container">
+      <div class="row justify-content-md-center">
+          <div class="col col-lg-6 contact-col">
+              <h5>Paulius Trucinskas</h5>
+              <a href="mailto:paulius.trucinskas@student.manchester.ac.uk">paulius.trucinskas@student.manchester.ac.uk</a>
+          </div>
+          <div class="col col-lg-6 contact-col">
+              <h5>Mohamad Hosein Miraftabi</h5>
+              <a href="mailto:mohamad.miraftabi@student.manchester.ac.uk">mohamad.miraftabi@student.manchester.ac.uk</a>
+          </div>
+      </div>
+      <div class="row justify-content-md-center">
+          <div class="col col-lg-6 contact-col">
+              <h5>Kane Moss</h5>
+              <a href="mailto:kane.moss@student.manchester.ac.uk">kane.moss@student.manchester.ac.uk</a>
+          </div>
+          <div class="col col-lg-6 contact-col">
+              <h5>Steeve Moussa</h5>
+              <a href="mailto:steeve.moussa@student.manchester.ac.uk">steeve.moussa@student.manchester.ac.uk</a>
+          </div>
+      </div>
+      <div class="row justify-content-md-center">
+          <div class="col col-lg-6 contact-col">
+              <h5>Jia Sheng Liang</h5>
+              <a href="mailto:jia.liang-2@student.manchester.ac.uk">jia.liang-2@student.manchester.ac.uk</a>
+          </div>
+          <div class="col col-lg-6 contact-col">
+              <h5>Alasdair Olway</h5>
+              <a href="mailto:alasdair.olway@student.manchester.ac.uk">alasdair.olway@student.manchester.ac.uk</a>
+          </div>
+      </div>
+      <div class="row ">
+          <div class="col col-lg-6 contact-col">
+              <h5>Teodor Stefan Pintea</h5>
+              <a href="mailto:teodor.pintea@student.manchester.ac.uk">teodor.pintea@student.manchester.ac.uk</a>
+          </div>
+      </div>
   </div>
-</body>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+  <script>
+    var navItem = document.getElementById("contact-nav-item");
+    navItem.classList.add("active");
+  </script>
 {% endblock %}
