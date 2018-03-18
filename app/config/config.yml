@@ -44,10 +44,10 @@ twig:
 doctrine:
     dbal:
         driver: pdo_mysql
-        host: '52.23.237.31'
+        host: 'localhost'
         dbname: 'bullyshield_website'
-        user: 'bullyshieldadmin'
-        password: 'csx7'
+        user: 'root'
+        password: '22224568'
         charset: UTF8
 
     orm:
