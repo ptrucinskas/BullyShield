@@ -261,8 +261,19 @@ html body .body-container {
     max-width: 250px;
     transition: max-width 1s ease-out .1s, opacity 1s ease-out .1s, color .2s;
 }
+
 .hover-reveal b {
     padding:.125em .375em;
+}
+
+.flagged-text {
+    float: right;
+    color: #c33;
+}
+
+
+.flagged-text b{
+    margin-right: 5px;
 }
 
 .contact-col {
