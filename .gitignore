@@ -1,5 +1,6 @@
 /.web-server-pid
 /app/config/parameters.yml
+/app/config/config.yml
 /build/
 /phpunit.xml
 /var/*
@@ -15,6 +16,7 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
+/web/py/HelperClass/MySQLConnect.py
 composer.phar
 .idea
 
