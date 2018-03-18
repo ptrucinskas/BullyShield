@@ -123,6 +123,7 @@ class Message extends BaseMessage
     public function __construct()
     {
         $this->setFlag(false);
+        $this->receiverFlag = false;
         $this->createdAt = new \DateTime();
         $this->metadata = new ArrayCollection();
     }
