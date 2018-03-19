@@ -10,31 +10,40 @@
         <div id="messages-container">
             {% for message in thread.messages %}
 
-            {#
-            Flags should be indicated
+            {#{#}
+            {#Flags should be indicated#}
 
-            {% if message.flag %}{% endif %} - regular flag by algorithm
-            {% if message.receiverflag %}{% endif %} - flag by receiver
-            #}
+            {#{% if message.flag %}{% endif %} - regular flag by algorithm#}
+            {#{% if message.receiverflag %}{% endif %} - flag by receiver#}
+            {#}#}
 
                 {% if message.sender == app.user.username %}
                     {% set sender = 'You' %}
-                    <div class="alert alert-success" id="msg-container" role="alert">
+                    {% if message.flag or message.receiverflag %}
+                        <div class="alert alert-danger" id="msg-container" role="alert">
+                    {% else %}
+                        <div class="alert alert-success" id="msg-container" role="alert">
+                    {% endif %}
                 {% else %}
                     {% set sender = message.sender %}
-                    <div class="alert alert-secondary" id="msg-container" role="alert">
+
+                    {% if message.flag or message.receiverflag %}
+                        <div class="alert alert-danger" id="msg-container" role="alert">
+                    {% else %}
+                        <div class="alert alert-secondary" id="msg-container" role="alert">
+                    {% endif %}
                 {% endif %}
                     <div class="messenger_thread_message">
                         <div class="messenger_thread_message_info text-muted">
                             {% trans with {'%sender%': sender|e, '%date%': message.createdAt|date} from 'FOSMessageBundle' %}message_info{% endtrans %}
-                            {#<a class="text-danger float-right" id="receiver_flag" value="{{ message.id }}">#}
-                                {#<i class="fas fa-exclamation-triangle"></i>#}
-                                {#<i class="far fa-flag"></i>#}
-                            {#</a>#}
-                            {% if message.sender != app.user.username %}
+                            {% if message.sender != app.user.username and not message.flag and not message.receiverflag %}
                                <button type="button" id="receiver_flag" value={{ message.id }} class="hover-reveal">
                                    <b><i class="far fa-flag"></i></b><a href="#"><i>Flag as bullying</i></a>
                                </button>
+                            {% elseif message.flag or message.receiverflag %}
+                               <span class="flagged-text">
+                                   <b><i class="fas fa-flag"></i></b><i>Flagged for bullying</i>
+                               </span>
                             {% endif %}
                         </div>
 
@@ -108,7 +117,7 @@
                         },
                         success: function (data)
                         {
-                            // Indicate success
+                            
                         }
                     });
                 });
