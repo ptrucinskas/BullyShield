@@ -44,7 +44,7 @@ twig:
 doctrine:
     dbal:
         driver: pdo_mysql
-        host: '52.23.237.31'
+        host: 'localhost'
         dbname: 'bullyshield_website'
         user: 'bully_shield'
         charset: UTF8
