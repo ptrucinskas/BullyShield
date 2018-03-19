@@ -26,6 +26,7 @@
                     {% endif %}
                 {% else %}
                     {% set sender = message.sender %}
+
                     {% if message.flag or message.receiverflag %}
                         <div class="alert alert-danger" id="msg-container" role="alert">
                     {% else %}
@@ -116,7 +117,7 @@
                         },
                         success: function (data)
                         {
-                            // Indicate success
+                            
                         }
                     });
                 });
