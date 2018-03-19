@@ -52,7 +52,7 @@ import re
 
 #Connection Settings
 DB_HOST = "localhost"
-DB_USER = "root"
+DB_USER = "bully_shield"
 DB_PSWD = "22224568"
 DB_NAME = "bullyshield_website"
 
