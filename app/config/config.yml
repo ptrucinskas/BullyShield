@@ -46,9 +46,9 @@ doctrine:
         driver: pdo_mysql
         host: '52.23.237.31'
         dbname: 'bullyshield_website'
-        user: 'bullyshieldadmin'
-        password: 'csx7'
+        user: 'bully_shield'
         charset: UTF8
+        password: '22224568'
 
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
