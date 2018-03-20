@@ -26,14 +26,14 @@ fag	0.4	0.4
 faggot	0.5	0.5
 fat	0.25	0.75
 fatass	0.6	0.5
-fuck	0.4	0.6
+fuck	0.5	0.5
 fucker	0.5	0.5
 fucking	0.3	0.7
 fuckwit	0.75	0.75
 gay	0.3	0.7
 hooker	0.5	0.5
 ho	0.5	0.3
-idiot	0.6	0.4
+idiot	0.8	0.4
 jackoff	0.55	0.4
 knob	0.6	0.4
 knobhead	0.75	0.25
@@ -49,7 +49,7 @@ rectum	0.5	0.3
 queer	0.5	0.4
 scum	0.7	0.2
 sick	0.3	0.8
-shit	0.2	0.8
+shit	0.5	0.5
 slag	0.5	0.5
 slut	0.5	0.5
 son of a bitch	0.5	0.5
