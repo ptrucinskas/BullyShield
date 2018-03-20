@@ -7,6 +7,10 @@ imports:
 #        result_cache_driver: apc
 #        query_cache_driver: apc
 
+framework:
+    router:
+        resource: '%kernel.project_dir%/app/config/routing.yml'
+
 monolog:
     handlers:
         main:
