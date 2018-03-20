@@ -37,13 +37,14 @@
                         <div class="messenger_thread_message_info text-muted">
                             {% trans with {'%sender%': sender|e, '%date%': message.createdAt|date} from 'FOSMessageBundle' %}message_info{% endtrans %}
                             {% if message.sender != app.user.username and not message.flag and not message.receiverflag %}
-                               <button type="button" id="receiver_flag" value={{ message.id }} class="hover-reveal">
-                                   <b><i class="far fa-flag"></i></b><a href="#"><i>Flag as bullying</i></a>
+                               <button type="button" id="receiver_flag" value={{ message.id }} class="hover-reveal-btn">
+                                   <b><i class="far fa-flag"></i></b><a href="#"><i class="flag-text" id="flag-text-id"></i></a>
                                </button>
+
                             {% elseif message.flag or message.receiverflag %}
-                               <span class="flagged-text">
-                                   <b><i class="fas fa-flag"></i></b><i>Flagged for bullying</i>
-                               </span>
+                               <button type="button" id="receiver_flag" value={{ message.id }} class="flagged-text-btn" disabled>
+                                   <b><i class="far fa-flag"></i></b><a href="#"><i class="flagged-text" id="flag-text-id"></i></a>
+                               </button>
                             {% endif %}
                         </div>
 
@@ -107,7 +108,11 @@
 
         $(function () {
             $('button#receiver_flag').on('click', function () {
-                var messageId = $(this).val();
+                var button = $(this);
+                var container = button.parent().parent().parent();
+                var messageId = button.val();
+
+
                 $.ajax({
                         url: "/ajax_receiver_flag/" + messageId,
                         type: "POST",
@@ -117,11 +122,18 @@
                         },
                         success: function (data)
                         {
-                            
+                            container.removeClass("alert-secondary");
+                            container.addClass("alert-danger");
+                            button.removeClass("hover-reveal-btn");
+                            button.addClass("flagged-text-btn");
+                            button.prop('disabled', true);
+                            console.log($('#flag-text-id'))
+                            $('i#flag-text-id').removeClass("flag-text");
+                            $('i#flag-text-id').addClass("flagged-text");
                         }
-                    });
                 });
             });
+        });
     </script>
 
     <script>
