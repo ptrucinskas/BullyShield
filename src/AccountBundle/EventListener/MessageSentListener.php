@@ -24,7 +24,8 @@ class MessageSentListener
 
         $id = $entity->getId();
         $userId = $entity->getSender()->getId();
-        $process = new Process("python py/BullyShield.py $userId $id");
+        $pyLoc = "/home/pt/Desktop/GroupProject/web/py/BullyShield.py";
+        $process = new Process("python $pyLoc $userId $id");
         $process->start();
         return true;
     }

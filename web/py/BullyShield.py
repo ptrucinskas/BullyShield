@@ -14,7 +14,6 @@ SCORE_TO_TRIGGER_FLAG = 8
 userID = int(sys.argv[1])
 messageID = int(sys.argv[2])
 
-
 #main program. Given a userId and messageId, this retrives the message
 #calls the Bayes algorithm, and calls methods to set flags accordingly
 

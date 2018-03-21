@@ -51,9 +51,9 @@ import re
 """
 
 #Connection Settings
-DB_HOST = "52.23.237.31"
-DB_USER = "bullyshieldadmin"
-DB_PSWD = "csx7"
+DB_HOST = "localhost"
+DB_USER = "bully_shield"
+DB_PSWD = "22224568"
 DB_NAME = "bullyshield_website"
 
 #global list of black-listed words
