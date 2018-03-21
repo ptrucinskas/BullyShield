@@ -5,18 +5,10 @@
 
 <div id="thread-container">
     <div id="thread-inner-container">
-        <a href="/messaging" class="btn btn-secondary messaging-back-button">Back to Inbox</a>
+        <a href="{{ path("fos_message_inbox") }}" class="btn btn-secondary messaging-back-button">Back to Inbox</a>
         <h2>{{ thread.subject }}</h2>
         <div id="messages-container">
             {% for message in thread.messages %}
-
-            {#{#}
-            {#Flags should be indicated#}
-
-            {#{% if message.flag %}{% endif %} - regular flag by algorithm#}
-            {#{% if message.receiverflag %}{% endif %} - flag by receiver#}
-            {#}#}
-
                 {% if message.sender == app.user.username %}
                     {% set sender = 'You' %}
                     {% if message.flag or message.receiverflag %}
@@ -114,7 +106,7 @@
 
 
                 $.ajax({
-                        url: "/ajax_receiver_flag/" + messageId,
+                        url: "/app.php/ajax_receiver_flag/" + messageId,
                         type: "POST",
                         dataType: "json",
                         data: {
