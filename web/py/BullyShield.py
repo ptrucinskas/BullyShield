@@ -3,11 +3,13 @@ import re
 import sys
 import time
 from HelperClass import MySQLConnect
-from HelperClass import Bayes
+from HelperClass import Bays_accurate
 from HelperClass import ProcessMessage
 from HelperClass import Email
+from POS import Pos
 
-SCORE_TO_TRIGGER_FLAG = 5
+
+SCORE_TO_TRIGGER_FLAG = 8
 
 userID = int(sys.argv[1])
 messageID = int(sys.argv[2])
@@ -24,14 +26,24 @@ def bully_shield(userID, messageID):
   message = MySQLConnect.get_message(messageID)
   isSuspect = ProcessMessage.scan_message(message)
 
+  #place message into MessagesToProcess.txt
+  #file = open("POS/MessagesToProcess.txt", 'a')
+  #file.write(message + "\n")
+  #file.close()
+
   #check if there is a blacklisted word in message, pass to Bayes if true
   #decrease score of user if false
   if isSuspect == True:
-    score = Bayes.bayes_main(message)
-    if score > 0:
-      MySQLConnect.increase_score(userID, score)
+      score = float(Bays_accurate.startPoint(message))
+      if score > 0.0:
+        MySQLConnect.increase_score(userID, 1)
+      else:
+        MySQLConnect.increase_score(userID, -1)
   else:
-    MySQLConnect.increase_score(userID, -1)
+       MySQLConnect.increase_score(userID, -1)
+
+  if Pos.main1(message) == True:
+    MySQLConnect.increase_score(userID, 1)
 
   time.sleep(0.2)
   #Check if user score has reached a certain limit. Set Flag if so

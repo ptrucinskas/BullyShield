@@ -1,0 +1,65 @@
+Hello how are you	N
+I'm good thank you	N
+Fuck You		Y
+I hate you		Y
+you smell		Y
+you smell really bad	Y
+that is fucking awesome	N
+what did you do today	N
+I'm going to beat you up	Y
+I want to fuck you	Y
+you are a fucking wanker	Y
+nobody likes you	Y
+I like you	N
+I fucking like you	N
+I really like you	N
+noone likes you	N
+you smell with your nose	N
+you smell foul	N
+I will find you	N
+I will kill you	Y
+i want to kill you	Y
+i want to rape you	Y
+i want to smell you	Y
+you are gay	Y
+its great that you are gay	Y
+I bet you suck	Y
+I bet you suck dick	Y
+you ride cock	Y
+suck my cock	Y
+suck my lolly	N
+that sucked	N
+that really sucked	N
+everything is shit	N
+everything you do is shit	N
+everything that I see is shit	N
+you are shit	Y
+you are the worst	Y
+I wish you didn't exist	Y
+You have no friends	Y
+I went to my house	N
+I went to school	N
+I went to a fucking bar	N
+what did you do today	N
+not much	N
+great	N
+where do you want to go	N
+i hope you die alone	Y
+i hope I die alone	N
+I'm going to die alone	N
+You're going to die alone	N
+You are a turd	Y
+You're a turd	Y
+I like horses	N
+Best of all the animals	N
+i love horses	N
+they're my friends	N
+i think you eat poop	Y
+go bathe	N
+go have a bath in poop	Y
+go away I dont like you	Y
+no one wants to talk to you	Y
+you are scum	Y
+you are great	N
+you are the best N
+

@@ -11,7 +11,12 @@ notPrfanityWordsInSentence = []
 # the elements of the tuple are word, T, F
 def tuple_of_profanity():
 	del list_of_profanityWords[:]
-	blacklist = open("../Data/Blacklist.txt").read().splitlines()
+        import os
+        script_dir = os.path.dirname(__file__)
+        rel_path = "../Data/Blacklist.txt"
+        abs_file_path = os.path.join(script_dir, rel_path)
+        blacklist = open(abs_file_path).read().splitlines()
+	#blacklist = open("Data/Blacklist.txt").read().splitlines()
 	for line in blacklist:
 		tuples = tuple(line.split("\t"))
 		list_of_profanityWords.append(tuples)
@@ -55,32 +60,38 @@ def bays():
 		interLevelProbabilityTrue *= float(true)
 	
 	#print "***" + str(interLevelProbabilityTrue) 
-	for tuples in notPrfanityWordsInSentence:  	
-		word, true, false = tuples
+	#for tuples in notPrfanityWordsInSentence:  	
+	#	word, true, false = tuples
 		
 		#print tuples 
 		#print interLevelProbabilityTrue
-		interLevelProbabilityTrue *= 1-float(true) 
+	#	interLevelProbabilityTrue *= float(false) 
 
 	#print "***" + str(interLevelProbabilityTrue) 
 	# probability of false
 	for tuples in list_of_selected_profanities:
 		word, true, false = tuples
 		interLevelProbabilityFalse *= float(false) 
+	
+	#print "***" + str(interLevelProbabilityFalse) 
+	#for tuples in notPrfanityWordsInSentence:  	
+	#	word, true, false = tuples
+	#	interLevelProbabilityFalse *= 1-float(false)
+	
+	#print "***" + str(interLevelProbabilityFalse) 
+	#print interLevelProbabilityTrue
+ 	#print interLevelProbabilityFalse	
+	#print (interLevelProbabilityTrue > interLevelProbabilityFalse)
 
-	for tuples in notPrfanityWordsInSentence:  	
-		word, true, false = tuples
-		interLevelProbabilityFalse *= 1-float(false)
-	
-#	print interLevelProbabilityTrue
-# 	print interLevelProbabilityFalse	
-	print (interLevelProbabilityTrue > interLevelProbabilityFalse)
-	
-	if interLevelProbabilityTrue >= interLevelProbabilityFalse:
+	if interLevelProbabilityTrue > interLevelProbabilityFalse:
+		#print "final " + str(finalProbability)
 		finalProbability = interLevelProbabilityTrue * 0.5 
-		finalProbability /=  denominator() 
- 	print finalProbability
-	#return finalProbability
+  		#print "final " + str(finalProbability)
+		finalProbability /=  denominator()
+		#print "final " + str(finalProbability) 
+ 	#print finalProbability
+        #print "final " + str(finalProbability)
+	return finalProbability
 
 def denominator():
 	probability = 0.0
@@ -94,15 +105,14 @@ def denominator():
 #*********** End bays probability **************
 def startPoint(message):
 	tuple_of_profanity()
-        message = ProcessMessage.tokenise_message(message)
+        message = ProcessMessage.tokenise_message(message.lower())
 	searchForProfanity(message)
         listOfNotBullyWordsInTheSentece()
-	bays()
+	return bays()
+startPoint("You are a fucking CUNT,Im going to STAB you with a rusty spoon. I hope you DIE, you fucking fuckWIT. Bastard dickHead.")
+#startPoint("You are a bitch")
+#startPoint("it was fucking annoying")
 
+listOfNotBullyWordsInTheSentece()
+print bays()
 
-
-startPoint("This is a fuck shit cunt fuck you all")
-startPoint("she is a motherfucker")
-startPoint("cunt cunt cunt cunt cunt")
-startPoint("you are fucking idiot")
-#startPoint("She is like a cow motherfucker")

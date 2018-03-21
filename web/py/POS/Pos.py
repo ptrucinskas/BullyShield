@@ -10,69 +10,71 @@ will not recognise it). The program is terminated once the conversation reaches
 '''
 # Create all the lists to use.
 connectors = ['is', 'are', 'r', 'a', 'an']
-subjectList = open("Subjects.txt").read().splitlines()
-blacklist = open("TestBlacklist.txt").read().splitlines()
-file = open("FlaggedMessages.txt", "a")
-flaggedMessages = open("FlaggedMessages.txt").read().splitlines()
+import os
+script_dir = os.path.dirname(__file__)
+subjectList = open(os.path.join(script_dir,"../POS/Subjects.txt")).read().splitlines()
+blacklist = open(os.path.join(script_dir,"../POS/TestBlacklist.txt")).read().splitlines()
+file = open(os.path.join(script_dir,"../POS/FlaggedMessages.txt"), "a")
+flaggedMessages = open(os.path.join(script_dir,"../POS/FlaggedMessages.txt")).read().splitlines()
+nice = open(os.path.join(script_dir,"../POS/NiceWords.txt")).read().splitlines()
 
-Flags = 0
+#Flags = 0
 flag = False
 
-def Pos(message):
-    global Flags
-    global flag
+def main1(message):
     if message.lower() in flaggedMessages:
-        print 'This message has been flagged by another user!'
-        flag = True
-        Flags += 1
-        return
+        return True
 
     word = message.split()
 
     for i in range(len(word)):
         if word[i].lower() in subjectList:
-            print 'Subject\t' + word[i]
             if i + 1 != len(word) and word[i + 1].lower() in connectors:
-                print 'Connector\t' + word[i + 1]
                 if i + 2 != len(word) and word[i + 2].lower() in connectors:
-                    print 'Connector\t' + word[i + 2]
                     if i + 3 != len(word) and word[i + 3].lower() in blacklist:
-                        print 'Blacklist!!!\t' + word[i + 3]
-                        print 'Flagged!!!'
-                        flag = True
-                        if message in flaggedMessages:
-                            print 'This message has been flagged by another user!'
+                        if i + 4 != len(word) and word[i + 4].lower() in nice:
+			    return False	
+                        elif message in flaggedMessages:
+                            return True
                         else:
                             file.write(message + '\n')
-                        Flags += 1
-                        break
+			    return True	
+
                 elif i + 2 != len(word) and word[i + 2].lower() in blacklist:
-                    print 'Blacklist!!\t' + word[i + 2]
-                    print 'Flagged!!'
-                    flag = True
+                    return True
+                    if i + 3 != len(word) and word[i + 3].lower() in nice:
+                        return False
+                    else:
+       
+                        return True
+                        if message in flaggedMessages:
+                            return True
+                        else:
+                            file.write(message + '\n')
+			    return True	
+
+            elif i + 1 != len(word) and word[i + 1].lower() in blacklist:
+                return True
+                if i + 2 != len(word) and word[i + 2].lower() in nice:
+                    return False
+                else:
+
+                    return True
                     if message in flaggedMessages:
-                        print 'This message has been flagged by another user!'
+                        return True
                     else:
                         file.write(message + '\n')
-                    Flags += 1
-                    break
-            elif i + 1 != len(word) and word[i + 1].lower() in blacklist:
-                print 'Blacklist!\t' + word[i + 1]
-                print 'Flagged!'
-                flag = True
-                if message in flaggedMessages:
-                    print 'This message has been flagged by another user!'
-                else:
-                    file.write(message + '\n')
-                Flags += 1
-                break
+		        return True
+
         elif word[i].lower() in blacklist:
-            print 'Warning!\t' + word[i]
+            #print 'Warning!\t' + word[i]
+            continue
         else:
-            print 'Safe\t' + word[i]
+            continue
+    return False    	
+   # suggestFlag(message)
 
-    suggestFlag(message)
-
+'''
 def suggestFlag(message):
     global Flags
     if not flag: #== False:
@@ -86,14 +88,6 @@ def suggestFlag(message):
         else:
             print 'Invalid input try again.'
             suggestFlag(message)
+'''
 
-def main():
-    global flag
-    while Flags < 5:
-        flag = False
-        message = raw_input('Message: ')
-        Pos(message)
-    print 'This conversation has been flagged!'
-    file.close()
-
-main()
+#print Pos("Hello")
